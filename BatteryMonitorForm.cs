@@ -32,6 +32,8 @@ namespace BatteryNotification
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point(-2000, -2000);
             this.Size = new Size(1, 1);
+            this.Visible = false;
+            this.Hide();
             
             notifyIcon = new NotifyIcon();
             notifyIcon.Icon = SystemIcons.Application;
@@ -114,6 +116,11 @@ namespace BatteryNotification
                 warningForm.Dispose();
                 warningForm = null;
             }
+        }
+
+        protected override void SetVisibleCore(bool value)
+        {
+            base.SetVisibleCore(false);
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
